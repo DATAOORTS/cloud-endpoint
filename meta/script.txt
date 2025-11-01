@@ -1,1 +1,1 @@
-#!/bin/bash\ntouch /home/ubuntu/.hushlogin
+sudo sh -c 'chmod -x /etc/update-motd.d/* 2>/dev/null || true; : > /etc/motd; [ -f /etc/issue ] && : > /etc/issue; if command -v systemctl >/dev/null 2>&1; then systemctl restart sshd || true; else service ssh restart || true; fi'
