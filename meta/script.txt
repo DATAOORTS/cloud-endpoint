@@ -1,1 +1,1 @@
-sudo sh -c 'chmod -x /etc/update-motd.d/* 2>/dev/null || true; : > /etc/motd; [ -f /etc/issue ] && : > /etc/issue; if command -v systemctl >/dev/null 2>&1; then systemctl restart sshd || true; else service ssh restart || true; fi'
+sudo bash -c 'chmod -x /etc/update-motd.d/*; rm -f /etc/motd.dynamic /run/motd.dynamic; : > /etc/motd; : > /etc/issue; sed -i "s|^PrintMotd yes|PrintMotd no|" /etc/ssh/sshd_config; sed -i "s|^#PrintMotd yes|PrintMotd no|" /etc/ssh/sshd_config; systemctl restart sshd'
